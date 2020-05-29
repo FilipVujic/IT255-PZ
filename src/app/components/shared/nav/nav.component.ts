@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-nav',
@@ -7,9 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
+  @Output() childEvent = new EventEmitter<string>();
+  
+  onChange(value:string) {
+    this.childEvent.emit(value);
+  }
+  
+/*   @Input() searchWord: string;
+  @Output() searchWordChange: EventEmitter<any> = new EventEmitter();
+
+  updateSearchWord(value) {
+    this.searchWord = value;
+    this.searchWordChange.emit(this.searchWord);
+  } */
+
+  constructor() {}
 
   ngOnInit(): void {
+    
   }
+
 
 }
