@@ -1,0 +1,9 @@
+<div class="container">
+    text je: {{searchText}}
+  <div class="row">
+    <div *ngFor="let product of products | filter:searchText">
+      <app-product-item [product]="product">
+      </app-product-item>
+    </div>
+  </div>
+</div>

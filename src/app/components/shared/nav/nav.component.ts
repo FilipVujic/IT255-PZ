@@ -12,14 +12,6 @@ export class NavComponent implements OnInit {
   onChange(value:string) {
     this.childEvent.emit(value);
   }
-  
-/*   @Input() searchWord: string;
-  @Output() searchWordChange: EventEmitter<any> = new EventEmitter();
-
-  updateSearchWord(value) {
-    this.searchWord = value;
-    this.searchWordChange.emit(this.searchWord);
-  } */
 
   constructor() {}
 
