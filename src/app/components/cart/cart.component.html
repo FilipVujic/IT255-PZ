@@ -1,0 +1,19 @@
+<div class="wrapper">
+    <!-- Sidebar -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3>Your cart</h3>
+        </div>
+
+        <div *ngIf="cartItems.length === 0" class="alert alert-info">No items added to cart</div>
+
+        <ul *ngIf="cartItems.length > 0" class="list-group">
+            <li class="list-group-item" *ngFor="let item of cartItems">
+                <app-cart-item [cartItem]="item"></app-cart-item>
+            </li>
+
+        </ul>
+
+    </nav>
+
+</div>

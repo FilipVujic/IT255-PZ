@@ -8,6 +8,8 @@ import { FooterComponent } from './components/shared/footer/footer.component';
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { FilterPipe } from './helpers/filter.pipe';
 import { ProductListComponent } from './components/product-list/product-list.component';
+import { CartComponent } from './components/cart/cart.component';
+import { CartItemComponent } from './components/cart-item/cart-item.component';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { ProductListComponent } from './components/product-list/product-list.com
     FooterComponent,
     ProductItemComponent,
     FilterPipe,
-    ProductListComponent
+    ProductListComponent,
+    CartComponent,
+    CartItemComponent
   ],
   imports: [
     BrowserModule,
