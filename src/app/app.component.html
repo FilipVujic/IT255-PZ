@@ -1,14 +1,5 @@
 <app-nav (childEvent)="childData=$event"></app-nav>
 <app-header></app-header>
-
-<!-- <div class="container">
-  <div class="row">
-    <div *ngFor="let product of products | filter:childData">
-      <app-product-item [product]="product">
-      </app-product-item>
-    </div>
-  </div>
-</div> -->
-
+<app-cart></app-cart>
 <app-product-list [searchText]="childData"></app-product-list>
 <app-footer></app-footer>
