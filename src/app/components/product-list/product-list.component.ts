@@ -1,3 +1,5 @@
+import { ProductItem } from './../product-item/product.model';
+import { ProductService } from './../../services/product.service';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -8,13 +10,16 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ProductListComponent implements OnInit {
 
   @Input() searchText: string;
+  products: ProductItem[] = [];
 
-  constructor() { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
+    this.products = this.productService.getProducts()
   }
 
-public products = [
+
+/* public products = [
     {
       id: 1,
       img_link: "https://www.rwsentosa.com/-/media/project/non-gaming/rwsentosa/hotels/hard-rock-hotel-singapore/hardrockhotelsg-exterior.jpg?mh=666&la=en&h=666&w=1366&mw=1366&hash=7890A13D2C4FE83769F4A571B997007215155027",
@@ -63,6 +68,6 @@ public products = [
       price: 1200,
       in_stock: true
     }
-  ];
+  ]; */
 
 }

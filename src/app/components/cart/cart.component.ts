@@ -10,11 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class CartComponent implements OnInit {
 
 
-  cartItems = [
-    /* {title: "Item 1", price: 300, qty: 1},
-    {title: "Item 2", price: 400, qty: 3},
-    {title: "Item 3", price: 200, qty: 2} */
-  ];
+  cartItems = [];
 
   cartTotal = 0;
 
@@ -39,7 +35,7 @@ export class CartComponent implements OnInit {
         break;
     }
   }
-    if(!productExists) {
+    if(!productExists && product.in_stock === true) {
       this.cartItems.push({
         id: product.id,
         title: product.title,
