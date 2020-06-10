@@ -1,6 +1,7 @@
 
 export class ProductItem {
 
+    id: number;
     img_link: string;
     title: string;
     description: string;

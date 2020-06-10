@@ -28,12 +28,47 @@ export class CartComponent implements OnInit {
     
   }
   addProductToCart(product: ProductItem) {
-    this.cartItems.push({
-      title: product.title,
-      price: product.price,
-      qty: 1
 
-    })
+    let productExists = false;
+
+    for (let i in this.cartItems) {
+      console.log(this.cartItems[i].id)
+      if(this.cartItems[i].id === product.id) {
+        this.cartItems[i].qty++
+        productExists = true
+        break;
+    }
+  }
+    if(!productExists) {
+      this.cartItems.push({
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        qty: 1
+      })
+    }
+
+    /* if(this.cartItems.length === 0) {
+      this.cartItems.push({
+        title: product.title,
+        price: product.price,
+        qty: 1
+      })
+    } else {
+    for(let i in this.cartItems) {
+      if(this.cartItems[i].id === product.id) {
+        this.cartItems[i].qty++
+        break;
+      }
+      else {
+        this.cartItems.push({
+          title: product.title,
+          price: product.price,
+          qty: 1
+        })
+      }
+    } */
+  
 
     this.cartTotal = 0;
     this.cartItems.forEach(item => {
