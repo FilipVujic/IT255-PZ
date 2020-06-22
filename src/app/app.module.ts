@@ -10,6 +10,7 @@ import { FilterPipe } from './helpers/filter.pipe';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { CartComponent } from './components/cart/cart.component';
 import { CartItemComponent } from './components/cart-item/cart-item.component';
+import { HttpClientModule } from '@angular/common/http'
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { CartItemComponent } from './components/cart-item/cart-item.component';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
