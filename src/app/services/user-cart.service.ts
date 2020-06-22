@@ -3,15 +3,15 @@ import { Cart } from './../models/cart.model';
 import { ProductItem } from 'src/app/models/product.model';
 import { CartItem } from './../models/cart-item.model';
 import { cartUrl, productUrl, cartItemUrl, userID, userCartUrl } from './../config/api';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators'
+import { map, catchError } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
 })
-export class CartService {
+export class UserCartService {
 
 
   constructor(private http: HttpClient) { }
@@ -48,15 +48,26 @@ export class CartService {
     let userCart: UserCart;
     userCart = new UserCart(product.productID, product.title, product.price);    
     console.log(userCart);
+    console.log(userCartUrl);
 
-/*     let cartItem: CartItem;
+    /* let cartItem: CartItem;
     cartItem = new CartItem(1, product.productID, 1);
+    console.log(cartItem); */
+    /* return this.http.post(cartItemUrl, { cartItem: CartItem }); 
+    this.http.post(userCartUrl, { userCart: UserCart });
+    */
 
-    let cart: Cart;
-    cart = new Cart(1, cartItem.cartID);
+/*     console.log(userCart.productID);
+    console.log(userCart.productName);
+    console.log(userCart.productPrice);
+    console.log(userCart.quantity);
+    console.log(userCart.userCartID);
+    console.log(userCart.userID); */
 
-    return this.http.post(cartItemUrl, { cartItem: cartItem }); */
+    return this.http.post(userCartUrl, userCart, { headers: new HttpHeaders ({
+      'Content-Type': 'application/json'
+    }) 
+  });
 
-    return this.http.post(userCartUrl, { userCart: UserCart });
   }
 }

@@ -25,7 +25,7 @@ export class CartComponent implements OnInit {
 
   loadCartItems() {
     this.cartService.getCartItems().subscribe((items: CartItem[]) => {
-      console.log(items);
+
       this.cartItems = items;
     })
   }
