@@ -1,7 +1,7 @@
 
 export class ProductItem {
 
-    id: number;
+    productID: number;
     title: string;
     imgLink: string;
     description: string;
@@ -13,7 +13,7 @@ export class ProductItem {
 
     constructor(id: number, title: string, imgLink: string, description: string, price: number, inStock: boolean, tags: string, 
         category: string) {
-            this.id = id;
+            this.productID = id;
             this.imgLink = imgLink;
             this.title = title;
             this.description = description;

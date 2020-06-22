@@ -1,9 +1,9 @@
-import { cartUrl } from './../config/api';
-import { ProductItem } from '../models/product.model';
+import { ProductItem } from 'src/app/models/product.model';
+import { CartItem } from './../models/cart-item.model';
+import { cartUrl, productUrl } from './../config/api';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { CartItem } from '../models/cart-item.model';
 import { map } from 'rxjs/operators'
 
 @Injectable({
@@ -21,15 +21,18 @@ export class CartService {
 
         for (let item of result) {
           let productExists = false;
+
           for (let i in cartItems) {
-            if(cartItems[i].productID === item.product.id) {
+            console.log(cartItems[i].productID)
+            if(cartItems[i].productID === item.productID) {
               cartItems[i].quantity++
               productExists = true
               break;
           }
         }
           if(!productExists) {
-            cartItems.push(new CartItem(item.id, item.product, 1));
+            console.log(item);
+            cartItems.push(new CartItem(1, item.productID, 1));
           }
       }
 
@@ -39,6 +42,8 @@ export class CartService {
   }
 
   addProductToCart(product: ProductItem): Observable<any> {
-    return this.http.post(cartUrl, { product });
+    let c: CartItem;
+    c = new CartItem(1, product.productID, 1);
+    return this.http.post(cartUrl, { c });
   }
 }
