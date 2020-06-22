@@ -1,4 +1,4 @@
-import { ProductItem } from './../product-item/product.model';
+import { ProductItem } from 'src/app/models/product.model';
 import { MessengerService } from 'src/app/services/messenger.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -35,7 +35,7 @@ export class CartComponent implements OnInit {
         break;
     }
   }
-    if(!productExists && product.in_stock === true) {
+    if(!productExists && product.inStock === true) {
       this.cartItems.push({
         id: product.id,
         title: product.title,

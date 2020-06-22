@@ -1,4 +1,4 @@
-import { ProductItem } from './product.model';
+import { ProductItem } from 'src/app/models/product.model';
 import { MessengerService } from './../../services/messenger.service';
 import { Component, OnInit, Input } from '@angular/core';
 
