@@ -1,6 +1,6 @@
+import { ProductItem } from './../models/product.model';
 import { UserCart } from './../models/user-cart.model';
 import { Cart } from './../models/cart.model';
-import { ProductItem } from 'src/app/models/product.model';
 import { CartItem } from './../models/cart-item.model';
 import { cartUrl, productUrl, cartItemUrl, userID, userCartUrl } from './../config/api';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -16,29 +16,30 @@ export class UserCartService {
 
   constructor(private http: HttpClient) { }
 
-  getCartItems(): Observable<CartItem[]> {
-    return this.http.get<CartItem[]>(cartItemUrl).pipe(
+  getCartItems(): Observable<UserCart[]> {
+    return this.http.get<UserCart[]>(userCartUrl).pipe(
       map((result: any[]) => {
-        let cartItems: CartItem[] = [];
+        let userCartList: UserCart[] = [];
 
         for (let item of result) {
           let productExists = false;
 
-          for (let i in cartItems) {
-
-            if(cartItems[i].productID === item.productID) {
-              cartItems[i].quantity++
+          for (let i in userCartList) {
+            /* console.log(userCartList[i]); */
+            if(userCartList[i].productID === item.productID) {
+              userCartList[i].quantity++
               productExists = true
               break;
           }
         }
           if(!productExists) {
 
-            cartItems.push(new CartItem(1, item.productID, 1));
+            userCartList.push(new UserCart(item.productID, item.productName, item.productPrice));
           }
       }
 
-        return cartItems;
+      
+        return userCartList;
       })
     );
   }
@@ -47,8 +48,7 @@ export class UserCartService {
 
     let userCart: UserCart;
     userCart = new UserCart(product.productID, product.title, product.price);    
-    console.log(userCart);
-    console.log(userCartUrl);
+
 
     /* let cartItem: CartItem;
     cartItem = new CartItem(1, product.productID, 1);

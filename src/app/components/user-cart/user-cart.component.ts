@@ -1,23 +1,21 @@
-import { UserCartService } from './../../services/user-cart.service';
-import { CartItem } from './../../models/cart-item.model';
-import { CartService } from './../../services/cart.service';
-import { ProductItem } from 'src/app/models/product.model';
-import { MessengerService } from 'src/app/services/messenger.service';
 import { Component, OnInit } from '@angular/core';
+import { MessengerService } from 'src/app/services/messenger.service';
+import { UserCartService } from 'src/app/services/user-cart.service';
+import { UserCart } from 'src/app/models/user-cart.model';
+import { ProductItem } from 'src/app/models/product.model';
 
 @Component({
-  selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  selector: 'app-user-cart',
+  templateUrl: './user-cart.component.html',
+  styleUrls: ['./user-cart.component.css']
 })
-export class CartComponent implements OnInit {
+export class UserCartComponent implements OnInit {
 
-
-  cartItems = [];
+  userCartItems = [];
 
   cartTotal = 0;
 
-  constructor(private msg: MessengerService, private cartService: CartService, private userCartService: UserCartService ) { }
+  constructor(private msg: MessengerService, private userCartService: UserCartService ) { }
 
   ngOnInit(): void {
     this.handleSubscription();
@@ -25,9 +23,11 @@ export class CartComponent implements OnInit {
   }
 
   loadCartItems() {
-    this.cartService.getCartItems().subscribe((items: CartItem[]) => {
+    this.userCartService.getCartItems().subscribe((items: UserCart[]) => {
 
-      this.cartItems = items;
+      
+      this.userCartItems = items;
+      console.log(this.userCartItems);
     })
   }
 
@@ -41,16 +41,15 @@ export class CartComponent implements OnInit {
 
     let productExists = false;
 
-    for (let i in this.cartItems) {
-      console.log(this.cartItems[i].id)
-      if(this.cartItems[i].id === product.productID) {
-        this.cartItems[i].qty++
+    for (let i in this.userCartItems) {
+      if(this.userCartItems[i].id === product.productID) {
+        this.userCartItems[i].qty++
         productExists = true
         break;
     }
   }
     if(!productExists && product.inStock === true) {
-      this.cartItems.push({
+      this.userCartItems.push({
         id: product.productID,
         title: product.title,
         price: product.price,
@@ -83,7 +82,7 @@ export class CartComponent implements OnInit {
 
   calculateCartTotal() {
     this.cartTotal = 0;
-    this.cartItems.forEach(item => {
+    this.userCartItems.forEach(item => {
       this.cartTotal += (item.qty * item.price)
     })
   }

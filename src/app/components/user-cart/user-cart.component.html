@@ -1,0 +1,21 @@
+<div class="wrapper">
+    <!-- Sidebar -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3>Your cart</h3>
+        </div>
+
+        <div *ngIf="userCartItems.length === 0" class="alert alert-info">No items added to cart</div>
+
+        <ul *ngIf="userCartItems.length > 0" class="list-group">
+            <li class="list-group-item" *ngFor="let item of userCartItems">
+                <app-user-cart-item [userCartItem]="item"></app-user-cart-item>
+            </li>
+            <li class="list-group-item active">
+                <strong>Total: </strong> {{ cartTotal | currency:'EUR' }}
+            </li>
+        </ul>
+
+    </nav>
+
+</div>
