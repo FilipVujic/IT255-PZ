@@ -1,5 +1,5 @@
-import { UserCartService } from './../../services/user-cart.service';
-import { MessengerService } from './../../services/messenger.service';
+import { UserCartService } from './../../services/user-cart/user-cart.service';
+import { MessengerService } from './../../services/messenger/messenger.service';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({

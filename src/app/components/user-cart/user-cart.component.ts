@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MessengerService } from 'src/app/services/messenger.service';
-import { UserCartService } from 'src/app/services/user-cart.service';
+import { MessengerService } from 'src/app/services/messenger/messenger.service';
+import { UserCartService } from 'src/app/services//user-cart/user-cart.service';
 import { UserCart } from 'src/app/models/user-cart.model';
 import { ProductItem } from 'src/app/models/product.model';
 

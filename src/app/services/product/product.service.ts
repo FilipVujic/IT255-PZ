@@ -1,6 +1,6 @@
 import { ProductItem } from 'src/app/models/product.model';
 import { Observable } from 'rxjs';
-import { productUrl } from './../config/api';
+import { productUrl } from './../../config/api';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 

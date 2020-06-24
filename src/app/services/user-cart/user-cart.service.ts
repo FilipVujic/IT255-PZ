@@ -1,6 +1,6 @@
-import { ProductItem } from './../models/product.model';
-import { UserCart } from './../models/user-cart.model';
-import { cartUrl, productUrl, cartItemUrl, userID, userCartUrl } from './../config/api';
+import { ProductItem } from './../../models/product.model';
+import { UserCart } from './../../models/user-cart.model';
+import { productUrl, userID, userCartUrl } from './../../config/api';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
@@ -23,7 +23,6 @@ export class UserCartService {
           let productExists = false;
 
           for (let i in userCartList) {
-            /* console.log(userCartList[i]); */
             if (userCartList[i].productID === item.productID) {
               userCartList[i].quantity++
               productExists = true

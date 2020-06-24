@@ -1,3 +1,4 @@
+import { RegisterService } from './../../services/register/register.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 
@@ -39,7 +40,7 @@ export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
 
-  constructor(private builder: FormBuilder) { }
+  constructor(private builder: FormBuilder, private registerService: RegisterService) { }
 
   ngOnInit() {
     this.buildForm()
@@ -47,7 +48,7 @@ export class RegisterComponent implements OnInit {
 
   buildForm() {
     this.registerForm = this.builder.group({
-      name: ['', Validators.required],
+      /* name: ['', Validators.required], */
       email: ['', [Validators.required, Validators.email]],
       username: ['', Validators.required],
       password: ['', [Validators.required, symbolValidator, Validators.minLength(4)]],
@@ -58,7 +59,11 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    console.log(this.registerForm.value)
+    console.log(
+      /* this.registerForm.get('username').value */
+    
+    );
+    this.registerService.register(this.registerForm);
   }
 
 }
