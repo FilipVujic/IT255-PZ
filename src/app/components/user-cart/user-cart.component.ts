@@ -24,10 +24,8 @@ export class UserCartComponent implements OnInit {
 
   loadCartItems() {
     this.userCartService.getCartItems().subscribe((items: UserCart[]) => {
-
-      
       this.userCartItems = items;
-      console.log(this.userCartItems);
+      this.calculateCartTotal();
     })
   }
 
@@ -56,34 +54,14 @@ export class UserCartComponent implements OnInit {
         qty: 1
       })
     }
-
-    /* if(this.cartItems.length === 0) {
-      this.cartItems.push({
-        title: product.title,
-        price: product.price,
-        qty: 1
-      })
-    } else {
-    for(let i in this.cartItems) {
-      if(this.cartItems[i].id === product.id) {
-        this.cartItems[i].qty++
-        break;
-      }
-      else {
-        this.cartItems.push({
-          title: product.title,
-          price: product.price,
-          qty: 1
-        })
-      }
-    } */
+    
     this.calculateCartTotal();
   }
 
   calculateCartTotal() {
     this.cartTotal = 0;
     this.userCartItems.forEach(item => {
-      this.cartTotal += (item.qty * item.price)
+      this.cartTotal += (item.quantity * item.productPrice)
     })
   }
 }
