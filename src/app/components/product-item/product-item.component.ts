@@ -1,6 +1,4 @@
 import { UserCartService } from './../../services/user-cart.service';
-import { CartService } from './../../services/cart.service';
-import { ProductItem } from 'src/app/models/product.model';
 import { MessengerService } from './../../services/messenger.service';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -14,7 +12,6 @@ export class ProductItemComponent implements OnInit {
   @Input() product: any;
 
   constructor(private msg: MessengerService, 
-    /* private cartService: CartService,  */
     private userCartService: UserCartService
     ) { }
 
@@ -25,10 +22,6 @@ export class ProductItemComponent implements OnInit {
     this.userCartService.addProductToCart(this.product).subscribe(() => {
       this.msg.sendMsg(this.product)
     })
-
-    /* this.cartService.addProductToCart(this.product).subscribe(() => {
-      this.msg.sendMsg(this.product)
-    }) */
     
   }
 
