@@ -1,8 +1,7 @@
 import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { LoginComponent } from './components/login/login.component';
-import { UserCartComponent } from './components/user-cart/user-cart.component';
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router'
 import { RegisterComponent } from './components/register/register.component';
 
@@ -25,6 +24,5 @@ const routes: Routes = [
     ]
 })
 export class AppRoutingModule {
-
 
 }
