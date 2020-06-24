@@ -1,3 +1,4 @@
+import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -12,7 +13,10 @@ import { CartComponent } from './components/cart/cart.component';
 import { CartItemComponent } from './components/cart-item/cart-item.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserCartComponent } from './components/user-cart/user-cart.component';
-import { UserCartItemComponent } from './components/user-cart-item/user-cart-item.component'
+import { UserCartItemComponent } from './components/user-cart-item/user-cart-item.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component'
 
 
 @NgModule({
@@ -27,12 +31,16 @@ import { UserCartItemComponent } from './components/user-cart-item/user-cart-ite
     CartComponent,
     CartItemComponent,
     UserCartComponent,
-    UserCartItemComponent
+    UserCartItemComponent,
+    LoginComponent,
+    RegisterComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

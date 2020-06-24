@@ -1,5 +1,6 @@
 <app-nav (childEvent)="childData=$event"></app-nav>
 <app-header></app-header>
-<app-user-cart></app-user-cart>
-<app-product-list [searchText]="childData"></app-product-list>
+<router-outlet></router-outlet>
+<!-- <app-user-cart></app-user-cart> -->
+<!-- <app-product-list [searchText]="childData"></app-product-list> -->
 <app-footer></app-footer>
