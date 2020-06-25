@@ -7,11 +7,11 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  @Output() childEvent = new EventEmitter<string>();
+  /* @Output() childEvent = new EventEmitter<string>();
   
   onChange(value:string) {
     this.childEvent.emit(value);
-  }
+  } */
 
   constructor() {}
 

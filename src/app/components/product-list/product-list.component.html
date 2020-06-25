@@ -1,4 +1,7 @@
 <app-user-cart></app-user-cart>
+<form class="form-inline my-2 my-lg-0" id="sidebar">
+  <input class="form-control mr-sm-2" type="text" [(ngModel)]="searchText" placeholder="Filter" aria-label="Search" name="name">
+</form>
 <div class="container">
   <div class="row">
     <div *ngFor="let product of productList | filter:searchText">
@@ -7,4 +10,5 @@
     </div>
   </div>
 </div>
+
 

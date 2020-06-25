@@ -13,9 +13,15 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
+
   login() {
-    /* console.log(this.model); */
+    /* console.log(this.model.username); */
+    localStorage.setItem("username", this.model.username);
+
+    console.log(
+      /* localStorage.getItem("username") */
+
+    );
   }
 
 }

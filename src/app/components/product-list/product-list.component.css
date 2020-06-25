@@ -1,0 +1,17 @@
+#sidebar {
+    /* border-radius: 10px; */
+    overflow-x:hidden;
+    overflow-y:auto;
+    margin-right: 7px;
+    /* padding: 5px; */
+    /* width: 250px; */
+    position: fixed;
+    top: 15px;
+    right: 10px;
+    /* height: 300px; */
+    z-index: 999;
+    /* background: #ffffff; */
+    color: rgb(33, 59, 202);
+    transition: all 0.3s;
+    
+}
