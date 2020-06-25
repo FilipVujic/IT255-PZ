@@ -14,7 +14,8 @@ import { UserCartComponent } from './components/user-cart/user-cart.component';
 import { UserCartItemComponent } from './components/user-cart-item/user-cart-item.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component'
+import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
+import { CheckoutComponent } from './components/checkout/checkout.component'
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { PageNotFoundComponent } from './components/shared/page-not-found/page-n
     UserCartItemComponent,
     LoginComponent,
     RegisterComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

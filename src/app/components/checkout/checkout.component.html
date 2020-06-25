@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <div class="guest-form-card card">
+
+            <div class="card-header text-center">
+                <h2>Login Here</h2>
+            </div>
+
+            <div class="card-body">
+                <form #checkoutForm="ngForm" (ngSubmit)="checkout()">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input id="name" class="form-control"
+                            [ngClass]="{ 'is-invalid': name.touched && name.invalid }" name="name"
+                            #name="ngModel" [(ngModel)]="model.name" required />
+                        <span class="invalid-feedback">Username can't be blank.</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="password" class="form-control"
+                            [ngClass]="{ 'is-invalid': email.touched && email.invalid }" #email="ngModel"
+                            [(ngModel)]="model.email" required />
+                        <span class="invalid-feedback">Email can't be blank.</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input id="phone" name="phone" class="form-control"
+                            [ngClass]="{ 'is-invalid': phone.touched && phone.invalid }" #phone="ngModel"
+                            [(ngModel)]="model.phone" required />
+                        <span class="invalid-feedback">Phone can't be blank.</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <input id="country" name="country" class="form-control"
+                            [ngClass]="{ 'is-invalid': country.touched && country.invalid }" #country="ngModel"
+                            [(ngModel)]="model.country" required />
+                        <span class="invalid-feedback">Country can't be blank.</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input id="address" name="address" class="form-control"
+                            [ngClass]="{ 'is-invalid': address.touched && address.invalid }" #address="ngModel"
+                            [(ngModel)]="model.address" required />
+                        <span class="invalid-feedback">Address can't be blank.</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="zipcode">Zip Code</label>
+                        <input id="zipcode" name="zipcode" class="form-control"
+                            [ngClass]="{ 'is-invalid': zipcode.touched && zipcode.invalid }" #zipcode="ngModel"
+                            [(ngModel)]="model.zipcode" required />
+                        <span class="invalid-feedback">Zip Code can't be blank.</span>
+                    </div>
+
+
+                    <button class="btn btn-primary btn-block" [disabled]="checkoutForm.invalid">Purchase</button>
+                </form>
+                <p class="text-center" style="margin-top: 10px;">
+                    <a [routerLink]="['/shop']">Back</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
