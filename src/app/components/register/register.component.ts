@@ -60,10 +60,10 @@ export class RegisterComponent implements OnInit {
 
   register() {
     console.log(
-      /* this.registerForm.get('username').value */
+      this.registerForm.get('username').value
     
     );
-    this.registerService.register(this.registerForm);
+    this.registerService.register(this.registerForm).subscribe();
   }
 
 }
