@@ -8,8 +8,8 @@ export class UserCart {
     quantity: number;
     userID: number;
 
-    constructor(productID: number, productName: string, productPrice: number) {
-        this.userCartID = 0;
+    constructor(userCartID: number, productID: number, productName: string, productPrice: number) {
+        this.userCartID = userCartID;
         this.productID = productID;
         this.productName = productName;
         this.productPrice = productPrice;

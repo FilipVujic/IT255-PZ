@@ -40,8 +40,8 @@ export class UserCartComponent implements OnInit {
     let productExists = false;
 
     for (let i in this.userCartItems) {
-      if(this.userCartItems[i].id === product.productID) {
-        this.userCartItems[i].qty++
+      if(this.userCartItems[i].productID === product.productID) {
+        this.userCartItems[i].quantity++
         productExists = true
         break;
     }

@@ -31,7 +31,7 @@ export class UserCartService {
           }
           if (!productExists) {
 
-            userCartList.push(new UserCart(item.productID, item.productName, item.productPrice));
+            userCartList.push(new UserCart(item.userCartID, item.productID, item.productName, item.productPrice));
           }
         }
 
@@ -44,7 +44,7 @@ export class UserCartService {
   addProductToCart(product: ProductItem): Observable<any> {
 
     let userCart: UserCart;
-    userCart = new UserCart(product.productID, product.title, product.price);
+    userCart = new UserCart(0, product.productID, product.title, product.price);
 
     return this.http.post(userCartUrl, userCart, {
       headers: new HttpHeaders({
