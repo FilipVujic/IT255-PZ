@@ -15,6 +15,7 @@ export class RegisterService {
 
     let user: User;
     user = new User(
+      0,
       registerForm.get('username').value ,
       registerForm.get('email').value ,
       registerForm.get('password').value 

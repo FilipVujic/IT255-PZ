@@ -1,3 +1,5 @@
+
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a [routerLink]="['/shop']">
     <img src="assets/vms-logo.png" style="max-height: 80px;">
@@ -18,7 +20,12 @@
         <li class="nav-item active">
           <a class="ml-2 btn btn-outline-secondary" [routerLink]="['/login']">Login <span class="sr-only">(current)</span></a>
         </li>
-        
+        <li class="nav-item active">
+          <a class="nav-link text-danger" *ngIf="(UserName$ | async) as UserName">{{ UserName }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-primary text-white" (click)="onLogout()">Logout</a>
+        </li>
         <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Dropdown
