@@ -1,7 +1,6 @@
-import { UserCartService } from 'src/app/services//user-cart/user-cart.service';
 import { ProductService } from './../../services/product/product.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { UserCart } from 'src/app/models/user-cart.model';
+
 
 @Component({
   selector: 'app-user-cart-item',
@@ -17,17 +16,14 @@ export class UserCartItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  @Output() loadCartItems: EventEmitter<any> = new EventEmitter();
+
   removeProduct() {
     console.log(this.userCartItem.userCartID)
-    this.productService.removeProduct(this.userCartItem.userCartID).subscribe();
+    this.productService.removeProduct(this.userCartItem.userCartID).subscribe(() => {
+      this.loadCartItems.emit();
+    });
     
   }
 
-  /* @Output() valueChange = new EventEmitter();
-    Counter = 0;
-    valueChanged() { // You can give any function name
-        
-    } */
-
-  
 }

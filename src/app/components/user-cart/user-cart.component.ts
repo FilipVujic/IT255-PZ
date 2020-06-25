@@ -29,6 +29,10 @@ export class UserCartComponent implements OnInit {
     })
   }
 
+  refreshCart() {
+    console.log("Radi");
+  }
+
   handleSubscription() {
     this.msg.getMsg().subscribe((product: ProductItem) => {
       this.loadCartItems();
