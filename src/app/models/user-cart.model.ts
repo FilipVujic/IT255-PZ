@@ -1,4 +1,4 @@
-import { userID } from './../config/api';
+/* import { userID } from './../config/api'; */
 export class UserCart {
 
     userCartID: number;
@@ -8,7 +8,7 @@ export class UserCart {
     quantity: number;
     userID: number;
 
-    constructor(userCartID: number, productID: number, productName: string, productPrice: number) {
+    constructor(userCartID: number, productID: number, productName: string, productPrice: number, userID: number) {
         this.userCartID = userCartID;
         this.productID = productID;
         this.productName = productName;

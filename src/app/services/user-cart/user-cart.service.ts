@@ -1,6 +1,6 @@
 import { ProductItem } from './../../models/product.model';
 import { UserCart } from './../../models/user-cart.model';
-import { productUrl, userID, userCartUrl, userCartUrlAux } from './../../config/api';
+import { productUrl, userCartUrl, userCartUrlAux, userCartUrlAux2 } from './../../config/api';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
@@ -15,7 +15,9 @@ export class UserCartService {
   constructor(private http: HttpClient) { }
 
   getCartItems(): Observable<UserCart[]> {
-    return this.http.get<UserCart[]>(userCartUrl).pipe(
+    return this.http.get<UserCart[]>(userCartUrlAux2 + "/" + localStorage.getItem("userID"), {headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })}).pipe(
       map((result: any[]) => {
         let userCartList: UserCart[] = [];
 
@@ -31,7 +33,7 @@ export class UserCartService {
           }
           if (!productExists) {
 
-            userCartList.push(new UserCart(item.userCartID, item.productID, item.productName, item.productPrice));
+            userCartList.push(new UserCart(item.userCartID, item.productID, item.productName, item.productPrice, parseInt(localStorage.getItem("userID"))));
           }
         }
 
@@ -44,7 +46,7 @@ export class UserCartService {
   addProductToCart(product: ProductItem): Observable<any> {
 
     let userCart: UserCart;
-    userCart = new UserCart(0, product.productID, product.title, product.price);
+    userCart = new UserCart(0, product.productID, product.title, product.price, parseInt(localStorage.getItem("userID")));
 
     return this.http.post(userCartUrl, userCart, {
       headers: new HttpHeaders({

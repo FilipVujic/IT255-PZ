@@ -31,6 +31,7 @@ export class LoginService {
         if (user.username === username && user.password === password) {
           localStorage.setItem("username", user.username);
           localStorage.setItem("loginStatus", "1");
+          localStorage.setItem("userID", user.userID.toString());
           
           this.router.navigate(['/shop']).then(() => {
             window.location.reload();
@@ -53,6 +54,7 @@ export class LoginService {
   logout() {
     localStorage.removeItem("username");
     localStorage.removeItem("loginStatus");
+    localStorage.removeItem("userID");
     window.location.reload();
   }
 

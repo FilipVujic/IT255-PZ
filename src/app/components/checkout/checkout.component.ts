@@ -1,4 +1,4 @@
-import { userID } from './../../config/api';
+/* import { userID } from './../../config/api'; */
 import { UserCartService } from 'src/app/services//user-cart/user-cart.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
@@ -19,7 +19,7 @@ export class CheckoutComponent implements OnInit {
 
   checkout() {
 
-    this.userCartService.emptyCart(userID).subscribe(() => {
+    this.userCartService.emptyCart(parseInt(localStorage.getItem("userID"))).subscribe(() => {
       /* window.location.reload(); */
       alert("Thank you for your purchase!");
       this.router.navigate(['/shop']).then(() => {
