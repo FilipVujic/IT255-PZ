@@ -10,7 +10,7 @@ export class FilterPipe implements PipeTransform {
     if(!productsList) return [];
     if(!searchWord) return productsList;
     return productsList.filter(product => 
-      product.title.toLowerCase().includes(searchWord.toLowerCase())
+      (product.title.toLowerCase() + product.description.toLocaleLowerCase()).includes(searchWord.toLowerCase())
     );
   }
 
