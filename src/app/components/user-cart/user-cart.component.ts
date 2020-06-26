@@ -3,6 +3,8 @@ import { MessengerService } from 'src/app/services/messenger/messenger.service';
 import { UserCartService } from 'src/app/services//user-cart/user-cart.service';
 import { UserCart } from 'src/app/models/user-cart.model';
 import { ProductItem } from 'src/app/models/product.model';
+import { LoginService } from 'src/app/services/login/login.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-user-cart',
@@ -13,11 +15,14 @@ export class UserCartComponent implements OnInit {
 
   userCartItems = [];
 
+  loginStatus$ : Observable<boolean>;
+
   cartTotal = 0;
 
-  constructor(private msg: MessengerService, private userCartService: UserCartService ) { }
+  constructor(private msg: MessengerService, private userCartService: UserCartService, private loginService: LoginService ) { }
 
   ngOnInit(): void {
+    this.loginStatus$ = this.loginService.isLoggedIn;
     this.handleSubscription();
     this.loadCartItems();
   }
@@ -47,12 +52,13 @@ export class UserCartComponent implements OnInit {
         break;
     }
   }
-    if(!productExists && product.inStock === true) {
+    if(!productExists && product.inStock) {
+      
       this.userCartItems.push({
-        id: product.productID,
-        title: product.title,
-        price: product.price,
-        qty: 1
+        userCartID: product.productID,
+        productName: product.title,
+        productPrice: product.price,
+        quantity: 1
       })
     }
     
@@ -64,18 +70,6 @@ export class UserCartComponent implements OnInit {
     this.userCartItems.forEach(item => {
       this.cartTotal += (item.quantity * item.productPrice)
     })
-  }
-
-  emptyUserCart() {
-
-    /* this.userCartItems.forEach(element => {
-      
-      this.userCartService.removeProductFromCart(element.userCartID).subscribe(() => {
-        this.loadCartItems();
-      });
-      
-    }); */
-    console.log("Prazni cart")
   }
 
 }

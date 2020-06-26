@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="wrapper" *ngIf="(loginStatus$ | async) as loginStatus">
     <!-- Sidebar -->
     <nav id="sidebar">
         <div class="sidebar-header">

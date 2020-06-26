@@ -1,3 +1,4 @@
+import { productUrl } from './../../config/api';
 import { UserCartService } from './../../services/user-cart/user-cart.service';
 import { MessengerService } from './../../services/messenger/messenger.service';
 import { Component, OnInit, Input } from '@angular/core';
@@ -23,9 +24,11 @@ export class ProductItemComponent implements OnInit {
   handleAddToCart() {
 
     if(localStorage.getItem("loginStatus") == "1") {
-      this.userCartService.addProductToCart(this.product).subscribe(() => {
-        this.msg.sendMsg(this.product)
-      })
+      if(this.product.inStock) {
+        this.userCartService.addProductToCart(this.product).subscribe(() => {
+          this.msg.sendMsg(this.product)
+        })
+      }
     }
     else {
       this.router.navigate(['/login']);
