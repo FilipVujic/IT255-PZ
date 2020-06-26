@@ -1,3 +1,4 @@
+import { AboutComponent } from './components/about/about.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
@@ -12,6 +13,7 @@ const routes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'shop', component: ProductListComponent },
     { path: 'checkout', component: CheckoutComponent },
+    { path: 'about', component: AboutComponent },
     { path: '**', component: PageNotFoundComponent }
 
 ]
