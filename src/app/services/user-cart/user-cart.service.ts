@@ -53,4 +53,10 @@ export class UserCartService {
     });
 
   }
+
+  removeProductFromCart(userCartID: number) {
+
+    return this.http.delete(userCartUrl + "/" + userCartID);
+  }
+
 }

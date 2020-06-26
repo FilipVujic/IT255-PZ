@@ -1,6 +1,7 @@
 import { RegisterService } from './../../services/register/register.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
+import { LoginService } from 'src/app/services/login/login.service';
 
 /**
  *
@@ -20,7 +21,7 @@ function passwordsMatchValidator(form) {
   return null
 }
 
-function symbolValidator(control) {
+/* function symbolValidator(control) {
   if(control.hasError('required')) return null;
   if(control.hasError('minlength')) return null;
 
@@ -29,7 +30,7 @@ function symbolValidator(control) {
   } else {
     return { symbol: true }
   }
-}
+} */
 
 @Component({
   selector: 'app-register',
@@ -40,7 +41,10 @@ export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
 
-  constructor(private builder: FormBuilder, private registerService: RegisterService) { }
+  constructor(
+    private builder: FormBuilder, 
+    private registerService: RegisterService, 
+    private loginService: LoginService) { }
 
   ngOnInit() {
     this.buildForm()
@@ -51,7 +55,7 @@ export class RegisterComponent implements OnInit {
       /* name: ['', Validators.required], */
       email: ['', [Validators.required, Validators.email]],
       username: ['', Validators.required],
-      password: ['', [Validators.required, symbolValidator, Validators.minLength(4)]],
+      password: ['', [Validators.required, Validators.minLength(4)]],
       confirmPassword: ''
     }, {
       validators: passwordsMatchValidator
@@ -59,11 +63,11 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    console.log(
-      this.registerForm.get('username').value
+
+    this.registerService.register(this.registerForm).subscribe(() => {
+      this.loginService.login(this.registerForm.get('username').value, this.registerForm.get('password').value).subscribe((user) => { });
+    });
     
-    );
-    this.registerService.register(this.registerForm).subscribe();
   }
 
 }

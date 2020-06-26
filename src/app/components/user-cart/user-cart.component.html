@@ -14,6 +14,13 @@
             <li class="list-group-item active">
                 <strong>Total: </strong> {{ cartTotal | currency:'EUR' }}
             </li>
+
+            <li>
+                <a [routerLink]="['/checkout']">
+                    <button class="btn btn-primary">Checkout</button>
+                </a>
+                
+            </li>
         </ul>
 
     </nav>

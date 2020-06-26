@@ -1,4 +1,4 @@
-import { ProductService } from './../../services/product/product.service';
+import { UserCartService } from 'src/app/services//user-cart/user-cart.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 
@@ -10,20 +10,20 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class UserCartItemComponent implements OnInit {
 
   @Input() userCartItem: any;
+  @Output() loadCartItems: EventEmitter<any> = new EventEmitter();
 
-  constructor(private productService: ProductService) { }
+  constructor(private userCartService: UserCartService) { }
 
   ngOnInit(): void {
   }
 
-  @Output() loadCartItems: EventEmitter<any> = new EventEmitter();
-
   removeProduct() {
-    console.log(this.userCartItem.userCartID)
-    this.productService.removeProduct(this.userCartItem.userCartID).subscribe(() => {
+
+    this.userCartService.removeProductFromCart(this.userCartItem.userCartID).subscribe(() => {
       this.loadCartItems.emit();
     });
     
   }
+
 
 }

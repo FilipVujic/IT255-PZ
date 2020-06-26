@@ -19,12 +19,8 @@ export class LoginComponent implements OnInit {
 
   login() {
 
-    this.loginService.login(this.model.username).subscribe((user) => {
+    this.loginService.login(this.model.username, this.model.password).subscribe((user) => {
       
-      localStorage.setItem("username", user.username);
-      localStorage.setItem("loginStatus", "1");
-
-      console.log(user)
     });
   }
 

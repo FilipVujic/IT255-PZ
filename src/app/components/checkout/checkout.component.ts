@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-checkout',
@@ -16,6 +16,7 @@ export class CheckoutComponent implements OnInit {
 
   checkout() {
 
+    console.log("Radi")
     
   }
 

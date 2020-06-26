@@ -17,9 +17,4 @@ export class ProductService {
     return this.http.get<ProductItem[]>(productUrl);
   }
 
-  removeProduct(userCartID: number) {
-
-    return this.http.delete(userCartUrl + "/" + userCartID);
-    
-  }
 }

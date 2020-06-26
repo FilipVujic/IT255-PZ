@@ -68,4 +68,17 @@ export class UserCartComponent implements OnInit {
       this.cartTotal += (item.quantity * item.productPrice)
     })
   }
+
+  emptyUserCart() {
+
+    /* this.userCartItems.forEach(element => {
+      
+      this.userCartService.removeProductFromCart(element.userCartID).subscribe(() => {
+        this.loadCartItems();
+      });
+      
+    }); */
+    console.log("Prazni cart")
+  }
+
 }
