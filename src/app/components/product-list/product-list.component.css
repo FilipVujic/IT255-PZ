@@ -3,10 +3,8 @@
     overflow-x:hidden;
     overflow-y:auto;
     margin-right: 7px;
-    /* padding: 5px; */
-    /* width: 250px; */
     position: fixed;
-    top: 15px;
+    top: 110px;
     right: 10px;
     /* height: 300px; */
     z-index: 999;

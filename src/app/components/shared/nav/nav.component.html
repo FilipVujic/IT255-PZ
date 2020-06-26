@@ -1,35 +1,36 @@
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <a [routerLink]="['/shop']">
     <img src="assets/vms-logo.png" style="max-height: 80px;">
   </a>
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" [routerLink]="['/shop']">Shop <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" [routerLink]="['/about']">About <span class="sr-only">(current)</span></a>
-        </li>
-        <li style="width: 5px; border-right: 1px solid black;">
 
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/shop']"><h4>Shop</h4></a>
         </li>
-        <li style="width: 5px">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/about']"><h4>About</h4></a>
+        </li>
+        
+      </ul>
 
+      <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item active">
+          <a class="nav-link text-danger" *ngIf="(UserName$ | async) as UserName"> <strong>{{ UserName }}</strong></a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-primary text-white" *ngIf="(loginStatus$ | async) as loginStatus" (click)="onLogout()">Logout</a>
         </li>
         <li class="nav-item active">
           <a class="btn btn-outline-primary" *ngIf="!(loginStatus$ | async) as loginStatus" [routerLink]="['/register']">Sign Up <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active">
           <a class="ml-2 btn btn-outline-secondary" *ngIf="!(loginStatus$ | async) as loginStatus" [routerLink]="['/login']">Login <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link text-danger" *ngIf="(UserName$ | async) as UserName">{{ UserName }}</a>
-        </li>
-        <li class="nav-item">
-          <a class="btn btn-primary text-white" *ngIf="(loginStatus$ | async) as loginStatus" (click)="onLogout()">Logout</a>
         </li>
 
       </ul>
