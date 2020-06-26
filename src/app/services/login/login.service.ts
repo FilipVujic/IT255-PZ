@@ -31,11 +31,10 @@ export class LoginService {
         if (user.username === username && user.password === password) {
           localStorage.setItem("username", user.username);
           localStorage.setItem("loginStatus", "1");
-          window.location.reload();
-          setTimeout(() => {
-            this.router.navigate(['/shop']);
-          }, 
-          5000);
+          
+          this.router.navigate(['/shop']).then(() => {
+            window.location.reload();
+          });
         }
         else {
           alert("Username and/or password incorrect!");

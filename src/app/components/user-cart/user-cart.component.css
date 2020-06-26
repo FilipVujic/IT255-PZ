@@ -18,6 +18,9 @@
     z-index: 999;
     background: #ffffff;
     color: rgb(33, 59, 202);
-    transition: all 0.3s;
-    
+    transition: all 0.3s;   
+}
+
+#checkoutBtn {
+    margin-top: 60px;
 }
