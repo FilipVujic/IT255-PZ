@@ -1,3 +1,5 @@
+import { userID } from './../../config/api';
+import { UserCartService } from 'src/app/services//user-cart/user-cart.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -9,14 +11,16 @@ export class CheckoutComponent implements OnInit {
 
   model: any = {}
 
-  constructor() { }
+  constructor(private userCartService: UserCartService) { }
 
   ngOnInit(): void {
   }
 
   checkout() {
 
-    console.log("Radi")
+    this.userCartService.emptyCart(userID).subscribe(() => {
+      
+    });
     
   }
 
