@@ -11,10 +11,9 @@
                 <form #checkoutForm="ngForm" (ngSubmit)="checkout()">
                     <div class="form-group">
                         <label for="name">Full Name</label>
-                        <input id="name" class="form-control"
-                            [ngClass]="{ 'is-invalid': name.touched && name.invalid }" name="name"
-                            #name="ngModel" [(ngModel)]="model.name" required />
-                        <span class="invalid-feedback">Username can't be blank.</span>
+                        <input id="name" class="form-control" [ngClass]="{ 'is-invalid': name.touched && name.invalid }"
+                            name="name" #name="ngModel" [(ngModel)]="model.name" required />
+                        <span class="invalid-feedback">Full Name can't be blank.</span>
                     </div>
 
                     <div class="form-group">
@@ -56,6 +55,49 @@
                             [(ngModel)]="model.zipcode" required />
                         <span class="invalid-feedback">Zip Code can't be blank.</span>
                     </div>
+
+
+
+                    <div class='form-group'>
+                        <label for="nameOnCard" class='control-label'>Name on Card</label>
+                        <input id="nameOnCard" name="nameOnCard" class='form-control' size='4' type='text'
+                            [ngClass]="{ 'is-invalid': nameOnCard.touched && nameOnCard.invalid }" #nameOnCard="ngModel"
+                            [(ngModel)]="model.nameOnCard" required />
+                        <span class="invalid-feedback">Name On Card can't be blank.</span>
+                    </div>
+                    <div class='form-group'>
+                        <label for="cardNumber" class='control-label'>Card Number</label>
+                        <input id="cardNumber" name="cardNumber" class='form-control card-number' size='20' type='text'
+                            [ngClass]="{ 'is-invalid': cardNumber.touched && cardNumber.invalid }" #cardNumber="ngModel"
+                            [(ngModel)]="model.cardNumber" required />
+                        <span class="invalid-feedback">Card Number can't be blank.</span>
+                    </div>
+
+
+                    <div class='form-row'>
+                        <div class='col-xs-4 form-group cvc required'>
+                            <label for="cvc" class='control-label'>CVC</label>
+                            <input id="cvc" name="cvc" class='form-control card-cvc' placeholder='ex. 311' size='4'
+                                type='text' [ngClass]="{ 'is-invalid': cvc.touched && cvc.invalid }" #cvc="ngModel"
+                                [(ngModel)]="model.cvc" required />
+                            <span class="invalid-feedback">CVC can't be blank.</span>
+                        </div>
+                        <div class='col-xs-4 form-group expiration required'>
+                            <label for="expMonth" class='control-label'>Expiration</label>
+                            <input id="expMonth" name="expMonth" class='form-control card-expiry-month' placeholder='MM' size='2' type='text'
+                                [ngClass]="{ 'is-invalid': expMonth.touched && expMonth.invalid }" #expMonth="ngModel"
+                                [(ngModel)]="model.expMonth" required />
+                            <span class="invalid-feedback">Expiry Month can't be blank.</span>
+                        </div>
+                        <div class='col-xs-4 form-group expiration required'>
+                            <label for="expYear" class='control-label'> </label>
+                            <input id="expYear" name="expYear" class='form-control card-expiry-year' placeholder='YYYY' size='4' type='text'
+                                [ngClass]="{ 'is-invalid': expYear.touched && expYear.invalid }" #expYear="ngModel"
+                                [(ngModel)]="model.expYear" required />
+                            <span class="invalid-feedback">Expiry Year can't be blank.</span>
+                        </div>
+                    </div>
+
 
 
                     <button class="btn btn-primary btn-block" [disabled]="checkoutForm.invalid">Purchase</button>
