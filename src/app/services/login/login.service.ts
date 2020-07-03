@@ -32,6 +32,12 @@ export class LoginService {
           localStorage.setItem("username", user.username);
           localStorage.setItem("loginStatus", "1");
           localStorage.setItem("userID", user.userID.toString());
+          if (user.admin) {
+            localStorage.setItem("isAdmin", "1");
+          }
+          else {
+            localStorage.setItem("isAdmin", "0");
+          }
           
           this.router.navigate(['/shop']).then(() => {
             window.location.reload();
@@ -55,6 +61,7 @@ export class LoginService {
     localStorage.removeItem("username");
     localStorage.removeItem("loginStatus");
     localStorage.removeItem("userID");
+    localStorage.removeItem("isAdmin");
     window.location.reload();
   }
 

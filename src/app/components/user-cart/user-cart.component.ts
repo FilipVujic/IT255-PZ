@@ -15,16 +15,20 @@ export class UserCartComponent implements OnInit {
 
   userCartItems = [];
 
-  loginStatus$ : Observable<boolean>;
+  loginStatus$: Observable<boolean>;
 
   cartTotal = 0;
 
-  constructor(private msg: MessengerService, private userCartService: UserCartService, private loginService: LoginService ) { }
+  constructor(private msg: MessengerService, private userCartService: UserCartService, private loginService: LoginService) { }
 
   ngOnInit(): void {
     this.loginStatus$ = this.loginService.isLoggedIn;
-    this.handleSubscription();
-    this.loadCartItems();
+    if (localStorage.getItem("loginStatus") === "1") {
+      this.handleSubscription();
+      this.loadCartItems();
+    }
+
+
   }
 
   loadCartItems() {
@@ -46,14 +50,14 @@ export class UserCartComponent implements OnInit {
     let productExists = false;
 
     for (let i in this.userCartItems) {
-      if(this.userCartItems[i].productID === product.productID) {
+      if (this.userCartItems[i].productID === product.productID) {
         this.userCartItems[i].quantity++
         productExists = true
         break;
+      }
     }
-  }
-    if(!productExists && product.inStock) {
-      
+    if (!productExists && product.inStock) {
+
       this.userCartItems.push({
         userCartID: product.productID,
         productName: product.title,
@@ -61,7 +65,7 @@ export class UserCartComponent implements OnInit {
         quantity: 1
       })
     }
-    
+
     this.calculateCartTotal();
   }
 
