@@ -35,10 +35,10 @@
             <a [routerLink]="['/shop']">Shop</a>
           </li>
           <li>
-            <a [routerLink]="['/login']">Login</a>
+            <a *ngIf="!(loginStatus$ | async) as loginStatus" [routerLink]="['/login']">Login</a>
           </li>
           <li>
-            <a [routerLink]="['/register']">Register</a>
+            <a *ngIf="!(loginStatus$ | async) as loginStatus" [routerLink]="['/register']">Register</a>
           </li>
           <li>
             <a [routerLink]="['/about']">About</a>
