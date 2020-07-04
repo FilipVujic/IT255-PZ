@@ -15,7 +15,8 @@ export class LoginService {
   constructor(private http: HttpClient, private router: Router) { }
 
   private loginStatus = new BehaviorSubject<boolean>(this.checkLoginStatus());
-  private UserName = new BehaviorSubject<string>(localStorage.getItem("username"));
+  private userName = new BehaviorSubject<string>(localStorage.getItem("username"));
+  private adminStatus = new BehaviorSubject<boolean>(this.checkIfAdmin());
 
   login(username: string, password: string): Observable<User> {
 
@@ -38,7 +39,7 @@ export class LoginService {
           else {
             localStorage.setItem("isAdmin", "0");
           }
-          
+
           this.router.navigate(['/shop']).then(() => {
             window.location.reload();
           });
@@ -57,6 +58,12 @@ export class LoginService {
     return false;
   }
 
+  checkIfAdmin(): boolean {
+    if (localStorage.getItem("isAdmin") == "1")
+      return true;
+    return false;
+  }
+
   logout() {
     localStorage.removeItem("username");
     localStorage.removeItem("loginStatus");
@@ -70,7 +77,11 @@ export class LoginService {
   }
 
   get currentUserName() {
-    return this.UserName.asObservable();
+    return this.userName.asObservable();
+  }
+
+  get isAdmin() {
+    return this.adminStatus.asObservable();
   }
 }
 

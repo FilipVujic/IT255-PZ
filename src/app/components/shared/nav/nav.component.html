@@ -21,7 +21,9 @@
       <ul class="navbar-nav ml-auto">
 
         <li class="nav-item active">
-          <a class="nav-link text-danger" *ngIf="(UserName$ | async) as UserName"> <strong>{{ UserName }}</strong></a>
+          <a class="nav-link text-danger" *ngIf="(userName$ | async) as userName">
+            <strong>{{ userName }}</strong><strong *ngIf="(isAdmin$ | async) as isAdmin"> [admin]</strong>
+          </a>
         </li>
         <li class="nav-item">
           <a class="btn btn-primary text-white" *ngIf="(loginStatus$ | async) as loginStatus" (click)="onLogout()">Logout</a>

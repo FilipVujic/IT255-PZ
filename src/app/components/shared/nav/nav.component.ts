@@ -15,12 +15,19 @@ export class NavComponent implements OnInit {
 
     this.loginStatus$ = this.loginService.isLoggedIn;
 
-    this.UserName$ = this.loginService.currentUserName;
+    this.userName$ = this.loginService.currentUserName;
+
+    this.isAdmin$ = this.loginService.isAdmin;
+
   }
 
   loginStatus$ : Observable<boolean>;
 
-  UserName$ : Observable<string>;
+  userName$ : Observable<string>;
+
+  isAdmin$ : Observable<boolean>;
+
+  
 
   onLogout() {
     this.loginService.logout();
