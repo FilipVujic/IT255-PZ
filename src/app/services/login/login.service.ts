@@ -25,7 +25,7 @@ export class LoginService {
         let user: User;
 
         for (let i in data) {
-          user = new User(data[0]["userID"], data[0]["username"], data[0]["email"], data[0]["password"]);
+          user = new User(data[0]["userID"], data[0]["username"], data[0]["email"], data[0]["password"], data[0]["admin"]);
         }
 
         if (user.username === username && user.password === password) {
