@@ -1,9 +1,10 @@
-<div class="wrapper" *ngIf="(loginStatus$ | async) as loginStatus">
+<div class="wrapper" id="fixed" *ngIf="(loginStatus$ | async) as loginStatus">
     <!-- Sidebar -->
+    <div class="sidebar-header" id="cartTitle">
+        <h3>Your cart</h3>
+    </div>
     <nav id="sidebar">
-        <div class="sidebar-header">
-            <h3>Your cart</h3>
-        </div>
+        
 
         <div *ngIf="userCartItems.length === 0" class="alert alert-info">No items added to cart</div>
 
@@ -11,19 +12,18 @@
             <li class="list-group-item" *ngFor="let item of userCartItems">
                 <app-user-cart-item (loadCartItems)="loadCartItems()" [userCartItem]="item"></app-user-cart-item>
             </li>
-            <li class="list-group-item active">
-                <strong>Total: </strong> {{ cartTotal | currency:'EUR' }}
-            </li>
-
-            <li>
-                <div class="text-center" id="checkoutBtn">
-                    <a [routerLink]="['/checkout']">
-                        <button class="btn btn-primary">Checkout</button>
-                    </a>
-                </div>
-            </li>
+            
         </ul>
 
     </nav>
-
+    <div id="cartTotal">
+        <li class="list-group-item active">
+            <strong>Total: </strong> {{ cartTotal | currency:'EUR' }}
+        </li>
+    </div>
+    <div class="text-center" style="width: 250px;">
+        <a [routerLink]="['/checkout']">
+            <button class="btn btn-primary" id="checkoutBtn">Checkout</button>
+        </a>
+    </div>
 </div>

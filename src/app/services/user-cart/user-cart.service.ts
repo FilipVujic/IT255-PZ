@@ -36,8 +36,7 @@ export class UserCartService {
             userCartList.push(new UserCart(item.userCartID, item.productID, item.productName, item.productPrice, parseInt(localStorage.getItem("userID"))));
           }
         }
-
-
+        
         return userCartList;
       })
     );

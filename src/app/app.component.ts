@@ -8,6 +8,5 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class AppComponent {
   title = 'music-shop';
   
-  public childData: string;
 
 }

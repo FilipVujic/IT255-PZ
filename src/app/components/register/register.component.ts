@@ -65,7 +65,7 @@ export class RegisterComponent implements OnInit {
   register() {
 
     this.registerService.register(this.registerForm).subscribe(() => {
-      this.loginService.login(this.registerForm.get('username').value, this.registerForm.get('password').value).subscribe((user) => { });
+      this.loginService.login(this.registerForm.get('username').value, this.registerForm.get('password').value, true).subscribe((user) => { });
     });
     
   }

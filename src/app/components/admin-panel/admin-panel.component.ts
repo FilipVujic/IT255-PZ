@@ -26,13 +26,6 @@ export class AdminPanelComponent implements OnInit {
   }
 
   createProduct() {
-    /* console.log(this.model.title);
-    console.log(this.model.imgLink);
-    console.log(this.model.description);
-    console.log(this.model.price);
-    console.log(this.model.inStock);
-    console.log(this.model.tags);
-    console.log(this.model.category); */
 
     let product;
     product = new ProductItem(

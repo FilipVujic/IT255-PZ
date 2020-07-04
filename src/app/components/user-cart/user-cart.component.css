@@ -21,6 +21,42 @@
     transition: all 0.3s;   
 }
 
+#fixed {
+
+    position: fixed;
+    top: 260px;
+    right: 0;
+    z-index: 999;
+    margin-right: 7px;
+}
+
+#cartTitle {
+
+    margin-top: 60px;
+    position: fixed;
+    top: 160px;
+    right: 0;
+    z-index: 999;
+    margin-right: 140px;
+}
+
+#cartTotal {
+
+    margin-top: 60px;
+    width: 250px;
+    position: fixed;
+    top: 510px;
+    right: 0;
+    z-index: 999;
+    margin-right: 7px;
+}
+
 #checkoutBtn {
     margin-top: 60px;
+    width: 250px;
+    position: fixed;
+    top: 570px;
+    right: 0;
+    z-index: 999;
+    margin-right: 7px;
 }

@@ -15,11 +15,13 @@ export class LoginComponent implements OnInit {
   constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {
+
+    
   } 
 
   login() {
 
-    this.loginService.login(this.model.username, this.model.password).subscribe((user) => {
+    this.loginService.login(this.model.username, this.model.password, this.model.remember).subscribe((user) => {
       
     });
   }

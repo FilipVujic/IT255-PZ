@@ -13,11 +13,15 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {
 
+    /* sessionStorage.setItem("username", localStorage.getItem("username"));
+    sessionStorage.setItem("loginStatus", localStorage.getItem("loginStatus"));
+    sessionStorage.setItem("userID", localStorage.getItem("userID"));
+    sessionStorage.setItem("isAdmin", localStorage.getItem("isAdmin")); */
+
     this.loginStatus$ = this.loginService.isLoggedIn;
-
     this.userName$ = this.loginService.currentUserName;
-
     this.isAdmin$ = this.loginService.isAdmin;
+
 
   }
 
