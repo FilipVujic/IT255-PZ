@@ -1,6 +1,6 @@
 import { ProductItem } from './../../models/product.model';
 import { UserCart } from './../../models/user-cart.model';
-import { productUrl, userCartUrl, userCartUrlAux, userCartUrlAux2 } from './../../config/api';
+import { productUrl, userCartUrl, userCartUrlAux, userCartUrlAux2, userCartUrlAux3 } from './../../config/api';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
@@ -61,13 +61,14 @@ export class UserCartService {
     return this.http.delete(userCartUrl + "/" + userCartID);
   }
 
+  removeByProductID(productID: number) {
+
+    return this.http.delete(userCartUrlAux3 + "/" + productID);
+  }
+
   emptyCart(userID: number) {
 
-    return this.http.delete(userCartUrlAux + "/" + userID, {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    });
+    return this.http.delete(userCartUrlAux + "/" + userID);
   }
 
 }

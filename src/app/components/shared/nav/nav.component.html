@@ -15,6 +15,9 @@
         <li class="nav-item active">
           <a class="nav-link" [routerLink]="['/about']"><h4>About</h4></a>
         </li>
+        <li class="nav-item active">
+          <a class="nav-link" *ngIf="(isAdmin$ | async) as isAdmin" [routerLink]="['/admin-panel']"><h4>Panel</h4></a>
+        </li>
         
       </ul>
 

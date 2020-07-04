@@ -35,14 +35,16 @@ export class LoginService {
           localStorage.setItem("userID", user.userID.toString());
           if (user.admin) {
             localStorage.setItem("isAdmin", "1");
+            this.router.navigate(['/admin-panel']).then(() => {
+              window.location.reload();
+            });
           }
           else {
             localStorage.setItem("isAdmin", "0");
+            this.router.navigate(['/shop']).then(() => {
+              window.location.reload();
+            });
           }
-
-          this.router.navigate(['/shop']).then(() => {
-            window.location.reload();
-          });
         }
         else {
           alert("Username and/or password incorrect!");

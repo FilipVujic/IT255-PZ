@@ -1,5 +1,5 @@
 <div class="col">
-<div class="card" style="width: 18rem; margin-bottom: 20px; min-height: 460px;">
+  <div class="card" style="width: 18rem; margin-bottom: 20px; min-height: 460px;">
     <img class="card-img-top" style="height: 120px;" src="{{product.imgLink}}" alt="Product image">
     <div class="card-body">
       <h5 class="card-title">{{product.title}}</h5>
@@ -10,19 +10,12 @@
       <li class="list-group-item">In-stock: {{product.inStock}}</li>
     </ul>
     <div class="card-body">
-      <button
-      type="button"
-      class="btn btn-primary"
-      style="margin-right: 10px; width: 110px;"
-      (click)="handleAddToCart()">
-      Add to cart
+      <button type="button" class="btn btn-primary" style="margin-right: 10px; width: 110px;"
+        (click)="handleAddToCart()">
+        Add to cart
       </button>
-      <button
-      type="button"
-      class="btn btn-secondary"
-      style="width: 110px;"
-      >
-      Buy now
+      <button type="button" class="btn btn-secondary" style="width: 110px;">
+        Buy now
       </button>
     </div>
   </div>

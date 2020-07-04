@@ -1,0 +1,113 @@
+<div class="container" style="margin-top: 50px; margin-bottom: 50px;">
+    
+    <div class="col-md-4">
+        <div class="row">
+            <button class="btn btn-primary button" (click)="toggleAddProduct()">Add product</button>
+        </div>
+        <div class="row">
+            <button class="btn btn-primary button" (click)="toggleDeleteProduct()">Delete product</button>
+        </div>
+    </div>
+
+    <div class="guest-form-card card" style="margin-top: 30px; margin-bottom: 30px; max-width: 500px;"  *ngIf="showAddProduct">
+
+        <div class="card-header text-center">
+            <h2>Create Product</h2>
+        </div>
+
+        <div class="card-body">
+            <form #createProductForm="ngForm" (ngSubmit)="createProduct()">
+                <div class="form-group">
+                    <label for="username">Title</label>
+                    <input id="title" class="form-control"
+                        [ngClass]="{ 'is-invalid': title.touched && title.invalid }" name="title"
+                        #title="ngModel" [(ngModel)]="model.title" required />
+                    <span class="invalid-feedback">Title can't be blank.</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="imgLink">Image Link</label>
+                    <input id="imgLink" name="imgLink" class="form-control"
+                        [ngClass]="{ 'is-invalid': imgLink.touched && imgLink.invalid }" #imgLink="ngModel"
+                        [(ngModel)]="model.imgLink" required />
+                    <span class="invalid-feedback">Image Link can't be blank.</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <input id="description" name="description" class="form-control"
+                        [ngClass]="{ 'is-invalid': description.touched && description.invalid }" #description="ngModel"
+                        [(ngModel)]="model.description" required />
+                    <span class="invalid-feedback">Description can't be blank.</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="price">Price</label>
+                    <input id="price" name="price" class="form-control"
+                        [ngClass]="{ 'is-invalid': price.touched && price.invalid }" #price="ngModel"
+                        [(ngModel)]="model.price" required />
+                    <span class="invalid-feedback">Price can't be blank.</span>
+                </div>
+
+                <div class="form-group">
+                    <input type="checkbox" id="inStock" name="inStock" #inStock="ngModel"
+                        [(ngModel)]="model.inStock">
+                    <label class="ml-1" for="inStock">In Stock</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="tags">Tags</label>
+                    <input id="tags" name="tags" class="form-control"
+                        [ngClass]="{ 'is-invalid': tags.touched && tags.invalid }" #tags="ngModel"
+                        [(ngModel)]="model.tags" required />
+                    <span class="invalid-feedback">Tags can't be blank.</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <input id="category" name="category" class="form-control"
+                        [ngClass]="{ 'is-invalid': category.touched && category.invalid }" #category="ngModel"
+                        [(ngModel)]="model.category" required />
+                    <span class="invalid-feedback">Category can't be blank.</span>
+                </div>
+
+                <button class="btn btn-primary btn-block" [disabled]="createProductForm.invalid">Create Product</button>
+            </form>
+            
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <div class="container" *ngIf="showDeleteProduct">
+            <div class="row">
+              <div>
+                <table>
+                    <tr>
+                      <th>productID</th>
+                      <th>title</th>
+                      <th>imgLink</th>
+                      <th>description</th>
+                      <th>price</th>
+                      <th>inStock</th>
+                      <th>tags</th>
+                      <th>category</th>
+                    </tr>
+                    <tr *ngFor="let product of productList">
+                      <td>{{ product.productID }}</td>
+                      <td>{{ product.title }}</td>
+                      <td id="limitWidth">{{product.imgLink | slice: 0:50 }}...</td>
+                      <td>{{product.description | slice: 0:50 }}...</td>
+                      <td>{{ product.price | currency: 'EUR'}}</td>
+                      <td>{{ product.inStock }}</td>
+                      <td>{{ product.tags }}</td>
+                      <td>{{ product.category }}</td>
+                      <button class="btn btn-secondary" (click)="deleteProduct(product.productID)">Delete</button>
+                    </tr>
+                  </table>
+              </div>
+            </div>
+          </div>
+    </div>
+
+
+</div>

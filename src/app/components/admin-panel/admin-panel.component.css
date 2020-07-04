@@ -1,0 +1,28 @@
+.button {
+    min-width: 150px;
+    margin-top: 30px;
+    
+}
+
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+    word-wrap: break-word;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+#limitWidth {
+  max-width: 300px;
+}

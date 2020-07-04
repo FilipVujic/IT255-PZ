@@ -19,13 +19,19 @@ export class CheckoutComponent implements OnInit {
 
   checkout() {
 
-    this.userCartService.emptyCart(parseInt(localStorage.getItem("userID"))).subscribe(() => {
-      /* window.location.reload(); */
-      alert("Thank you for your purchase!");
-      this.router.navigate(['/shop']).then(() => {
-        window.location.reload();
+    if (localStorage.getItem("isAdmin") == "1") {
+      alert("Admin cannot purchase products!")
+    }
+    else {
+      this.userCartService.emptyCart(parseInt(localStorage.getItem("userID"))).subscribe(() => {
+        alert("Thank you for your purchase!");
+        this.router.navigate(['/shop']).then(() => {
+          window.location.reload();
+        });
       });
-    });
+    }
+
+    
     
   }
 

@@ -16,7 +16,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
-import { AboutComponent } from './components/about/about.component'
+import { AboutComponent } from './components/about/about.component';
+import { AdminPanelComponent } from './components/admin-panel/admin-panel.component'
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { AboutComponent } from './components/about/about.component'
     RegisterComponent,
     PageNotFoundComponent,
     CheckoutComponent,
-    AboutComponent
+    AboutComponent,
+    AdminPanelComponent
   ],
   imports: [
     BrowserModule,
